@@ -121,7 +121,7 @@ class ShipmentTracking {
     {
     	$url = "http://nolp.dhl.de/nextt-online-public/set_identcodes.do?idc=" . $trackingNumber;
 
-    	if ($international_shipment) {
+    	if ($internationalShipment) {
     		$url .= "&internationalShipment=" . $internationalShipment;
     	}
 
