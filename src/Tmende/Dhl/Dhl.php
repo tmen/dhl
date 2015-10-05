@@ -7,7 +7,11 @@ class Dhl {
      *
      * @param
      */
-    public function __construct(){
+    public function __construct() {
         var_dump('DHL Konstruktor');
+    }
+
+    public function test() {
+    	var_dump('DHL Test');
     }
 }

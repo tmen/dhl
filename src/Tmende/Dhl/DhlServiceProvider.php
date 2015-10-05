@@ -46,7 +46,7 @@ class DhlServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array('dhl');
+		return array('dhl', 'shipmenttracking');
 	}
 
 	/**
@@ -56,7 +56,7 @@ class DhlServiceProvider extends ServiceProvider {
 	 */
 	protected function registerBusinessCustomShipping()
 	{
-		$this->app['dhl.businesscustomshipping'] = $this->app->share(function($app)
+		$this->app['businesscustomshipping'] = $this->app->share(function($app)
 		{
 			return new BusinessCustomShipping;
 		});
@@ -64,7 +64,7 @@ class DhlServiceProvider extends ServiceProvider {
 		$this->app->booting(function()
 	    {
 	      $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-	      $loader->alias('PrivateCustomShipping', 'Tmende\Dhl\Facades\BusinessCustomShipping');
+	      $loader->alias('businesscustomshipping', 'Tmende\Dhl\Facades\BusinessCustomShipping');
 	    });
 	}
 
@@ -75,7 +75,7 @@ class DhlServiceProvider extends ServiceProvider {
 	 */
 	protected function registerPrivateCustomShipping()
 	{
-		$this->app['dhl.privatecustomshipping'] = $this->app->share(function($app)
+		$this->app['privatecustomshipping'] = $this->app->share(function($app)
 		{
 			return new PrivateCustomShipping;
 		});
@@ -83,7 +83,7 @@ class DhlServiceProvider extends ServiceProvider {
 		$this->app->booting(function()
 	    {
 	      $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-	      $loader->alias('PrivateCustomShipping', 'Tmende\Dhl\Facades\PrivateCustomShipping');
+	      $loader->alias('privatecustomshipping', 'Tmende\Dhl\Facades\PrivateCustomShipping');
 	    });
 	}
 
@@ -94,7 +94,7 @@ class DhlServiceProvider extends ServiceProvider {
 	 */
 	protected function registerShipmentTracking()
 	{
-		$this->app['dhl.shipmenttracking'] = $this->app->share(function($app)
+		$this->app['shipmenttracking'] = $this->app->share(function($app)
 		{
 			return new ShipmentTracking;
 		});
@@ -102,7 +102,7 @@ class DhlServiceProvider extends ServiceProvider {
 		$this->app->booting(function()
 	    {
 	      $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-	      $loader->alias('ShipmentTracking', 'Tmende\Dhl\Facades\ShipmentTracking');
+	      $loader->alias('shipmenttracking', 'Tmende\Dhl\Facades\ShipmentTracking');
 	    });
 	}
 
@@ -113,7 +113,7 @@ class DhlServiceProvider extends ServiceProvider {
 	 */
 	protected function registerLocationSearch()
 	{
-		$this->app['dhl.locationsearch'] = $this->app->share(function($app)
+		$this->app['locationsearch'] = $this->app->share(function($app)
 		{
 			return new LocationSearch;
 		});
@@ -121,7 +121,7 @@ class DhlServiceProvider extends ServiceProvider {
 		$this->app->booting(function()
 	    {
 	      $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-	      $loader->alias('LocationSearch', 'Tmende\Dhl\Facades\LocationSearch');
+	      $loader->alias('locationsearch', 'Tmende\Dhl\Facades\LocationSearch');
 	    });
 	}
 
@@ -136,9 +136,6 @@ class DhlServiceProvider extends ServiceProvider {
 		$this->app['dhl'] = $this->app->share(function($app)
 		{
 			return new Dhl();
-			/*return new Dhl(
-				$app['sentry.privatecustomshipping']
-			);*/
 		});
 
 		$this->app->alias('dhl', 'Tmende\Dhl\Dhl');
