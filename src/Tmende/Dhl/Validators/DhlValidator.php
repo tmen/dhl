@@ -39,7 +39,7 @@ class DhlValidator extends IlluminateValidator {
     	$charArrayLength = count($charArray);
     	$checkSum = 0;
     	var_dump($charArray);
-    	for ($i=0 ; $i < $charArrayLength-2 ; $i++ ) {
+    	for ($i=0 ; $i < $charArrayLength-1 ; $i++ ) {
     		$multiplikator = ($i % 2) ? 1 : 3;
     		$checkSum += $charArray[$i] * $multiplikator;
     		var_dump('i: ' . $i . ' multiplikator:' . $multiplikator);
