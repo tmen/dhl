@@ -5,6 +5,7 @@ use Tmende\Dhl\Shipping\BusinessCustomShipping;
 use Tmende\Dhl\Shipping\PrivateCustomShipping;
 use Tmende\Dhl\ShipmentTracking\ShipmentTracking;
 use Tmende\Dhl\LocationSearch\LocationSearch;
+use Tmende\Dhl\Validators;
 
 class DhlServiceProvider extends ServiceProvider {
 
@@ -23,6 +24,10 @@ class DhlServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('tmende/dhl');
+
+		$this->app->validator->resolver(function($translator, $data, $rules, $messages) {
+		    return new DhlValidator($translator, $data, $rules, $messages);
+		});
 	}
 
 	/**
