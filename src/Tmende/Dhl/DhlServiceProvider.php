@@ -5,7 +5,7 @@ use Tmende\Dhl\Shipping\BusinessCustomShipping;
 use Tmende\Dhl\Shipping\PrivateCustomShipping;
 use Tmende\Dhl\ShipmentTracking\ShipmentTracking;
 use Tmende\Dhl\LocationSearch\LocationSearch;
-use Tmende\Dhl\Validators;
+use Tmende\Dhl\Validators\DhlValidator;
 
 class DhlServiceProvider extends ServiceProvider {
 
