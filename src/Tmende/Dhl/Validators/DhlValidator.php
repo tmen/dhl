@@ -35,6 +35,19 @@ class DhlValidator extends IlluminateValidator {
      */
     protected function validateTrackingcode($attribute, $value)
     {
+    	$charArray = explode('', $value);
+    	$charArrayLength = count($charArray);
+    	$checkSum = 0;
+
+    	for ($i=0 ; $i < $charArrayLength-2 ; $i++ ) {
+    		$multiplikator = ($i % 2) ? 1 : 3;
+    		$checkSum += $charArray[$i] * $multiplikator;
+    	}
+
+    	if ($checksum % 10 != $charArray[$charArrayLength-1] ) {
+    		return false;
+    	}
+
     	return true;
     }
 }
