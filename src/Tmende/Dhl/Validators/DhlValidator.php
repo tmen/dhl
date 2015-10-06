@@ -43,8 +43,8 @@ class DhlValidator extends IlluminateValidator {
     		$multiplikator = ($i % 2) ? 1 : 3;
     		$checkSum += $charArray[$i] * $multiplikator;
     	}
-
-    	if ($checkSum % 10 != $charArray[$charArrayLength-1] ) {
+    	dd($charArray[$charArrayLength-1]);
+    	if (($checkSum % 10) != $charArray[$charArrayLength-1] ) {
     		return false;
     	}
 
