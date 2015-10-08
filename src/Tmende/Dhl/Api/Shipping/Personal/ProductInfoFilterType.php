@@ -25,55 +25,55 @@ class ProductInfoFilterType
      * @var boolean $viewEKP
      * @access public
      */
-    public $viewEKP = null;
+    public $viewEKP = true;
 
     /**
      * @var boolean $viewAdditionalAttributes
      * @access public
      */
-    public $viewAdditionalAttributes = null;
+    public $viewAdditionalAttributes = true;
 
     /**
      * @var boolean $viewPrice
      * @access public
      */
-    public $viewPrice = null;
+    public $viewPrice = true;
 
     /**
      * @var boolean $viewFuturePrices
      * @access public
      */
-    public $viewFuturePrices = null;
+    public $viewFuturePrices = false;
 
     /**
      * @var boolean $viewDisplayText
      * @access public
      */
-    public $viewDisplayText = null;
+    public $viewDisplayText = true;
 
     /**
      * @var boolean $viewDimension
      * @access public
      */
-    public $viewDimension = null;
+    public $viewDimension = true;
 
     /**
      * @var boolean $viewFeatures
      * @access public
      */
-    public $viewFeatures = null;
+    public $viewFeatures = true;
 
     /**
      * @var boolean $viewTransitions
      * @access public
      */
-    public $viewTransitions = null;
+    public $viewTransitions = true;
 
     /**
      * @var boolean $noXmlCompression
      * @access public
      */
-    public $noXmlCompression = null;
+    public $noXmlCompression = false;
 
     /**
      * @var int $maxWeigth
