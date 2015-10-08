@@ -59,6 +59,7 @@ class PrivateCustomShippingRequestBuilder {
      * @return AuthType
      */
 	public function createAuthType($credentials) {
+		dd($credentials->pcs_subPartnerId);
 		return new AuthType($credentials->pcs_partnerId, $credentials->pcs_subPartnerId, $credentials->pcs_user, $credentials->pcs_password, $credentials->cig_sessionAuth, $credentials->cig_accountId);
 	}
 

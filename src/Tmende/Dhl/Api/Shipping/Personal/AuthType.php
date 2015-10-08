@@ -13,7 +13,7 @@ class AuthType
      * @var string $subPartnerId
      * @access public
      */
-    public $subPartnerId = null;
+    public $subPartnerId = '';
 
     /**
      * @var string $user

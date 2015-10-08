@@ -72,7 +72,7 @@ class Credentials {
      * @var string $pcs_subPartnerId
      * @access public
      */
-    public $pcs_subPartnerId;
+    public $pcs_subPartnerId = "";
 
     /**
      *
@@ -130,17 +130,16 @@ class Credentials {
         	$this->debug = Config::get('dhl.debug', false);
         	$this->environment = Config::get('dhl.environment', 'sandbox');
 	        $this->cig_user = Config::get('dhl.cig.user');
-	        $this->cig_password =  Config::get('dhl.cig.password');
+	        $this->cig_password = Config::get('dhl.cig.password');
 	        $this->cig_endpoint_soap = Config::get('dhl.cig.endpoint.' . $this->environment . '.soap');
 	        $this->cig_endpoint_rest = Config::get('dhl.cig.endpoint.' . $this->environment . '.rest');
-	        $this->cig_sessionAuth =  Config::get('dhl.cig.sessionAuth');
-	        $this->cig_accountId =  Config::get('dhl.cig.accountId');
+	        $this->cig_sessionAuth = Config::get('dhl.cig.sessionAuth');
+	        $this->cig_accountId = Config::get('dhl.cig.accountId');
 
 	        $this->pcs_user = Config::get('dhl.pcs.' . $this->environment . '.user');
-	        $this->pcs_password =  Config::get('dhl.pcs.' . $this->environment . '.password');
-	        $this->pcs_partnerId =  Config::get('dhl.pcs.' . $this->environment . '.partnerid');
-	        $this->pcs_subPartnerId =  Config::get('dhl.pcs' . $this->environment . '.subpartnerid');
-
+	        $this->pcs_password = Config::get('dhl.pcs.' . $this->environment . '.password');
+	        $this->pcs_partnerId = Config::get('dhl.pcs.' . $this->environment . '.partnerid');
+	        $this->pcs_subPartnerId = Config::get('dhl.pcs.' . $this->environment . '.subpartnerid');
 
 	        $this->tnt_user = Config::get('dhl.tnt.user');
 	        $this->tnt_password = Config::get('dhl.tnt.password');
@@ -152,16 +151,16 @@ class Credentials {
 	    	$this->debug = Config::get('dhl::debug', false);
 	    	$this->environment = Config::get('dhl::environment', 'sandbox');
 	    	$this->cig_user = Config::get('dhl::cig.user');
-	        $this->cig_password =  Config::get('dhl::cig.password');
+	        $this->cig_password = Config::get('dhl::cig.password');
 	        $this->cig_endpoint_soap = Config::get('dhl::cig.endpoint.' . $this->environment . '.soap');
 	        $this->cig_endpoint_rest = Config::get('dhl::cig.endpoint.' . $this->environment . '.rest');
-	        $this->cig_sessionAuth =  Config::get('dhl::cig.sessionAuth');
-	        $this->cig_accountId =  Config::get('dhl::cig.accountId');
+	        $this->cig_sessionAuth = Config::get('dhl::cig.sessionAuth');
+	        $this->cig_accountId = Config::get('dhl::cig.accountId');
 
 	        $this->pcs_user = Config::get('dhl::pcs.' . $this->environment . '.user');
-	        $this->pcs_password =  Config::get('dhl::pcs.' . $this->environment . '.password');
-	        $this->pcs_partnerId =  Config::get('dhl::pcs.' . $this->environment . '.partnerid');
-	        $this->pcs_subPartnerId =  Config::get('dhl::pcs' . $this->environment . '.subpartnerid');
+	        $this->pcs_password = Config::get('dhl::pcs.' . $this->environment . '.password');
+	        $this->pcs_partnerId = Config::get('dhl::pcs.' . $this->environment . '.partnerid');
+	        $this->pcs_subPartnerId = Config::get('dhl::pcs.' . $this->environment . '.subpartnerid');
 
 	        $this->tnt_user = Config::get('dhl::tnt.user');
 	        $this->tnt_password = Config::get('dhl::tnt.password');
