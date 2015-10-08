@@ -7,19 +7,19 @@ class ProductInfoFilterType
      * @var string $countryFilter
      * @access public
      */
-    public $countryFilter = null;
+    public $countryFilter = '*';
 
     /**
      * @var string $productGroupFilter
      * @access public
      */
-    public $productGroupFilter = null;
+    public $productGroupFilter = '*';
 
     /**
      * @var string $productFilter
      * @access public
      */
-    public $productFilter = null;
+    public $productFilter = '*';
 
     /**
      * @var boolean $viewEKP
