@@ -43,8 +43,7 @@ class PrivateCustomShipping {
      */
     public function getProductInfo(Array $properties = array()) {
     	$filter = new Filter($properties);
-    	$response = $this->_requestBuilder->getProductInfo($filter);
-    	var_dump($response);
+    	return $this->_requestBuilder->getProductInfo($filter);
     }
 
     /**

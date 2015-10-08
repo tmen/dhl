@@ -6,6 +6,8 @@ use Tmende\Dhl\Shipping\PrivateCustomShipping;
 use Tmende\Dhl\ShipmentTracking\ShipmentTracking;
 use Tmende\Dhl\LocationSearch\LocationSearch;
 use Tmende\Dhl\Validators\DhlValidator;
+use Tmende\Dhl\Commands\DhlCommand;
+use Tmende\Dhl\Commands\InstallCommand;
 
 class DhlServiceProvider extends ServiceProvider {
 
@@ -42,6 +44,7 @@ class DhlServiceProvider extends ServiceProvider {
 		$this->registerShipmentTracking();
 		$this->registerLocationSearch();
 		$this->registerDhl();
+		$this->registerCommands();
 	}
 
 	/**
@@ -53,6 +56,42 @@ class DhlServiceProvider extends ServiceProvider {
 	{
 		return array('dhl', 'shipmenttracking');
 	}
+
+	/**
+    * Register the commands.
+    *
+    * @return void
+    */
+  	public function registerCommands() {
+	    $this->registerDhlCommand();
+	    $this->registerInstallCommand();
+
+	    // Resolve the commands with Artisan by attaching the event listener to Artisan's
+	    // startup. This allows us to use the commands from our terminal.
+	    $this->commands('command.dhl', 'command.dhl.install');
+	}
+
+	/**
+	* Register the 'dhl' command.
+  	*
+	* @return void
+	*/
+	protected function registerDhlCommand() {
+   		$this->app['command.dhl'] = $this->app->share(function($app) {
+    		return new DhlCommand();
+    	});
+  	}
+
+  	/**
+	* Register the 'dhl.install' command.
+  	*
+	* @return void
+	*/
+	protected function registerInstallCommand() {
+   		$this->app['command.dhl.install'] = $this->app->share(function($app) {
+    		return new InstallCommand();
+    	});
+  	}
 
 	/**
 	 * Register the Business Custom Shipping

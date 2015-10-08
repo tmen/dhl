@@ -170,20 +170,7 @@ class PopPartnerService extends SoapClient {
     public function ProductInfo(ProductInfoRequestType $parameters)
     {
     	try {
-    		$response = $this->__soapCall('ProductInfo', array($parameters));
-    		echo 'Request Header : <br/><xmp>',
-			$this->__getLastRequestHeaders(),
-			'</xmp><br/><br/>',
-			'Request : <br/><xmp>',
-			$this->__getLastRequest(),
-			'</xmp><br/><br/>',
-			'Response Header : <br/><xmp>',
-			$this->__getLastResponseHeaders(),
-			'</xmp><br/><br/>',
-			'Response : <br/><xmp>',
-			$this->__getLastResponse(),
-			'</xmp>';
-			return $response;
+    		return $this->__soapCall('ProductInfo', array($parameters));
     	} catch (SoapFault $fault) {
     		$this->outputErrorMessage($fault);
     	}
