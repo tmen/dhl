@@ -2,6 +2,10 @@
 
 use Tmende\Dhl\Credentials\Credentials;
 use Tmende\Dhl\Api\Shipping\Personal\ProductInfoFilterType as Filter;
+use Tmende\Dhl\Api\Shipping\Personal\ShoppingCartIdentificationType;
+use Tmende\Dhl\Api\Shipping\Personal\BuyShoppingCartType;
+use Tmende\Dhl\Api\Shipping\Personal\DirectLabelInfoType;
+use Tmende\Dhl\Api\Shipping\Personal\PartnerBackLinksType;
 use Tmende\Dhl\Shipping\PrivateCustomShippingRequestBuilder as RequestBuilder;
 
 class PrivateCustomShipping {
@@ -34,7 +38,8 @@ class PrivateCustomShipping {
      * getProductInfo
      * This function queries information about available products and services.
      *
-     * @param
+     * @param Array $properties
+     * @access public
      */
     public function getProductInfo(Array $properties = array()) {
     	$filter = new Filter($properties);
@@ -47,6 +52,7 @@ class PrivateCustomShipping {
      * This function allows a new shopping basket session to be started.
      *
      * @param
+     * @access public
      */
     public function openShoppingCart() {
     	$response = $this->_requestBuilder->ShoppingCartOpen();
@@ -58,6 +64,7 @@ class PrivateCustomShipping {
      * This function validates the shopping basket.
      *
      * @param
+     * @access public
      */
     public function validateShoppingCart() {
     	$response = $this->_requestBuilder->ShoppingCartValidate();
@@ -71,7 +78,12 @@ class PrivateCustomShipping {
      * @param
      */
     public function getShoppingCartCheckoutViaPayment() {
-    	$response = $this->_requestBuilder->ShoppingCartCheckoutViaPayment();
+    	$shoppingCartIdentification = new ShoppingCartIdentificationType(null, null, null);
+    	$buyShoppingCart = new BuyShoppingCartType();
+    	$directLabelInfo = new DirectLabelInfoType();
+    	$partnerBackLinks = new PartnerBackLinksType();
+
+    	$response = $this->_requestBuilder->getShoppingCartCheckoutViaPayment();
     	var_dump($response);
     }
 
@@ -82,7 +94,7 @@ class PrivateCustomShipping {
      * @param
      */
     public function loadBuyedShoppingCart() {
-    	$response = $this->_requestBuilder->LoadBuyedShoppingCart();
+    	$response = $this->_requestBuilder->LoadBuyedShoppingCart($shoppingCartIdentification, $buyShoppingCart, $directLabelInfo, $partnerBackLinks);
     	var_dump($response);
     }
 }

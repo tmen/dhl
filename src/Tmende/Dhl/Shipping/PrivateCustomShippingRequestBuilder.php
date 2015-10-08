@@ -5,6 +5,7 @@ use Tmende\Dhl\Api\Shipping\Personal\PopPartnerService;
 use Tmende\Dhl\Api\Shipping\Personal\AuthType;
 use Tmende\Dhl\Api\Shipping\Personal\ProductInfoFilterType as Filter;
 use Tmende\Dhl\Api\Shipping\Personal\ProductInfoRequestType;
+use Tmende\Dhl\Api\Shipping\Personal\ShoppingCartCheckoutViaPaymentRequestType;
 
 class PrivateCustomShippingRequestBuilder {
 
@@ -36,6 +37,7 @@ class PrivateCustomShippingRequestBuilder {
      * Constructor
      *
      * @param Credentials $credentials
+     * @access public
      */
     public function __construct(Credentials $credentials) {
 
@@ -53,6 +55,7 @@ class PrivateCustomShippingRequestBuilder {
      * createAuthType
      *
      * @param Credentials $credentials
+     * @access public
      * @return AuthType
      */
 	public function createAuthType($credentials) {
@@ -63,10 +66,26 @@ class PrivateCustomShippingRequestBuilder {
      * getProductInfo
      *
      * @param Filter $filter
+     * @access public
      * @return ProductInfoResponseType
      */
 	public function getProductInfo(Filter $filter = NULL) {
 		$parameters = new ProductInfoRequestType($this->_authType, $this->_detailFlags, $this->_version, $filter);
 		return $this->_service->ProductInfo($parameters);
+	}
+
+	/**
+     * getShoppingCartCheckoutViaPayment
+     *
+     * @param ShoppingCartIdentificationType $shoppingCartIdentification
+     * @param BuyShoppingCartType $buyShoppingCart
+     * @param DirectLabelInfoType $directLabelInfo
+     * @param PartnerBackLinksType $partnerBackLinks
+     * @access public
+     * @return ShoppingCartCheckoutViaPaymentResponseType
+     */
+	public function getShoppingCartCheckoutViaPayment(ShoppingCartIdentificationType $shoppingCartIdentification, BuyShoppingCartType $buyShoppingCart, DirectLabelInfoType $directLabelInfo, PartnerBackLinksType $partnerBackLinks) {
+		$parameters = new ShoppingCartCheckoutViaPaymentRequestType($this->_authType, $this->_detailFlags, $this->_version, $shoppingCartIdentification, $buyShoppingCart, $directLabelInfo, $PartnerBackLinksType);
+		return $this->_service->shoppingCartCheckoutViaPayment($parameters);
 	}
 }
