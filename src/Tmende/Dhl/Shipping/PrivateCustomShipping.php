@@ -6,6 +6,7 @@ use Tmende\Dhl\Api\Shipping\Personal\ShoppingCartIdentificationType;
 use Tmende\Dhl\Api\Shipping\Personal\BuyShoppingCartType;
 use Tmende\Dhl\Api\Shipping\Personal\DirectLabelInfoType;
 use Tmende\Dhl\Api\Shipping\Personal\PartnerBackLinksType;
+use Tmende\Dhl\Api\Shipping\Personal\ProductInfoResponseType;
 use Tmende\Dhl\Shipping\PrivateCustomShippingRequestBuilder as RequestBuilder;
 
 class PrivateCustomShipping {
@@ -38,12 +39,24 @@ class PrivateCustomShipping {
      * getProductInfo
      * This function queries information about available products and services.
      *
-     * @param Array $properties
+     * @param array $properties
      * @access public
+     * @return ProductInfoResponseType
      */
-    public function getProductInfo(Array $properties = array()) {
+    public function getProductInfo(array $properties = array()) {
     	$filter = new Filter($properties);
     	return $this->_requestBuilder->getProductInfo($filter);
+    }
+
+    /**
+     * saveProductInfo
+     * This function saves all information about available products and services to the database.
+     *
+     * @param ProductInfoResponseType $infos
+     * @access public
+     */
+    public function saveProductInfo(ProductInfoResponseType $infos) {
+
     }
 
     /**
