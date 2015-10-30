@@ -27,9 +27,7 @@ class DhlServiceProvider extends ServiceProvider {
 	{
 		$this->package('tmende/dhl');
 
-		$this->app->validator->resolver(function($translator, $data, $rules, $messages) {
-		    return new DhlValidator($translator, $data, $rules, $messages);
-		});
+		$this->app->validator->extend('trackingcode', 'DhlValidator@validateTrackingcode');
 	}
 
 	/**
