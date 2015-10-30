@@ -100,8 +100,7 @@ class PopPartnerService extends SoapClient {
      * @param string $wsdl The wsdl file to use
      * @access public
      */
-    public function __construct(array $options = array(), $wsdl = 'https://cig.dhl.de/cig-wsdls/com/dpdhl/wsdl/privatkundenversand-api/2.0/privatkundenversand-api-2.0.wsdl', $debug = false)
-    {
+    public function __construct(array $options = array(), $wsdl = 'https://cig.dhl.de/cig-wsdls/com/dpdhl/wsdl/privatkundenversand-api/2.0/privatkundenversand-api-2.0.wsdl', $debug = false) {
     	foreach (self::$classmap as $key => $value) {
 			if (!isset($options['classmap'][$key])) {
 	    		$options['classmap'][$key] = $value;
@@ -125,8 +124,7 @@ class PopPartnerService extends SoapClient {
      * @access public
      * @return ShoppingCartValidateResponseType
      */
-    public function ShoppingCartValidate(ShoppingCartValidateRequestType $parameters)
-    {
+    public function ShoppingCartValidate(ShoppingCartValidateRequestType $parameters) {
     	try {
     		return $this->__soapCall('ShoppingCartValidate', array($parameters));
     	} catch (SoapFault $fault) {
@@ -139,8 +137,7 @@ class PopPartnerService extends SoapClient {
      * @access public
      * @return ShoppingCartCheckoutViaPaymentResponseType
      */
-    public function ShoppingCartCheckoutViaPayment(ShoppingCartCheckoutViaPaymentRequestType $parameters)
-    {
+    public function ShoppingCartCheckoutViaPayment(ShoppingCartCheckoutViaPaymentRequestType $parameters) {
     	try {
     		return $this->__soapCall('ShoppingCartCheckoutViaPayment', array($parameters));
     	} catch (SoapFault $fault) {
@@ -153,8 +150,7 @@ class PopPartnerService extends SoapClient {
      * @access public
      * @return LoadBuyedShoppingCartResponseType
      */
-    public function LoadBuyedShoppingCart(LoadBuyedShoppingCartRequestType $parameters)
-    {
+    public function LoadBuyedShoppingCart(LoadBuyedShoppingCartRequestType $parameters) {
     	try {
     		return $this->__soapCall('LoadBuyedShoppingCart', array($parameters));
     	} catch (SoapFault $fault) {
@@ -167,8 +163,7 @@ class PopPartnerService extends SoapClient {
      * @access public
      * @return ProductInfoResponseType
      */
-    public function ProductInfo(ProductInfoRequestType $parameters)
-    {
+    public function ProductInfo(ProductInfoRequestType $parameters) {
     	try {
     		return $this->__soapCall('ProductInfo', array($parameters));
     	} catch (SoapFault $fault) {
@@ -181,8 +176,7 @@ class PopPartnerService extends SoapClient {
      * @access public
      * @return ShoppingCartOpenResponseType
      */
-    public function ShoppingCartOpen(ShoppingCartOpenRequestType $parameters)
-    {
+    public function ShoppingCartOpen(ShoppingCartOpenRequestType $parameters) {
     	try {
     		return $this->__soapCall('ShoppingCartOpen', array($parameters));
     	} catch (SoapFault $fault) {
@@ -207,5 +201,4 @@ class PopPartnerService extends SoapClient {
 		'</xmp><br/><br/> Error Message : <br/>',
 		$fault->getMessage();
     }
-
 }

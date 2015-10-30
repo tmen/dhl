@@ -21,8 +21,8 @@ class InstallCommand extends Command {
  	* @return void
 	*/
 	public function fire() {
-		$this->call('migrate', ['--package' => 'tmende/dhl']);
+		$this->call('migrate', ['--bench' => 'tmende/dhl']); // --package for vendor; --bench for workbench
 		$this->line("<fg=green;options=bold>created dhl_products table</fg=green;options=bold>");
-    	$this->call('dump-autoload');
+    	//$this->call('dump-autoload');
   	}
 }

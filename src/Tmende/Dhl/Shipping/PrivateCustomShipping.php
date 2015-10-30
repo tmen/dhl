@@ -8,6 +8,7 @@ use Tmende\Dhl\Api\Shipping\Personal\DirectLabelInfoType;
 use Tmende\Dhl\Api\Shipping\Personal\PartnerBackLinksType;
 use Tmende\Dhl\Api\Shipping\Personal\ProductInfoResponseType;
 use Tmende\Dhl\Shipping\PrivateCustomShippingRequestBuilder as RequestBuilder;
+use Tmende\Dhl\Models\DhlProduct;
 
 class PrivateCustomShipping {
 
@@ -57,6 +58,25 @@ class PrivateCustomShipping {
      */
     public function saveProductInfo(ProductInfoResponseType $infos) {
 
+    	if ($infos->MarketplaceProducts->ProductGroup != null) {
+
+    		foreach ($tests->MarketplaceProducts->ProductGroup as $ProductGroup) {
+
+    			if($ProductGroup->CountryProducts != null) {
+
+					foreach ($ProductGroup->CountryProducts as $CountryProduct) {
+
+						$_product = new DhlProduct();
+
+						foreach ($CountryProduct->BaseProduct as $BaseProduct) {
+
+							$_product->display_name = $BaseProduct->BaseProductDesc->displayName;
+						}
+					}
+				}
+			}
+
+    	}
     }
 
     /**

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDhlProductsTable extends Migration {
+class CreateDhlProductsServicesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,11 @@ class CreateDhlProductsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('dhl_products', function(Blueprint $table) {
+		Schema::create('dhl_products_services', function(Blueprint $table) {
 
-    		$table->increments('id');
-    		$table->string('name', 40);
-    		$table->integer('product_desc_id');
+    		$table->integer('product_id');
+    		$table->integer('service_id');
 
-    		$table->timestamps();
     	});
 	}
 
@@ -29,7 +27,7 @@ class CreateDhlProductsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('dhl_products');
+		Schema::drop('dhl_products_services');
 	}
 
 }
