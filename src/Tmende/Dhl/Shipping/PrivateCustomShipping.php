@@ -100,6 +100,7 @@ class PrivateCustomShipping {
      */
     public function validateShoppingCart() {
     	$response = $this->_requestBuilder->ShoppingCartValidate();
+
     	var_dump($response);
     }
 
